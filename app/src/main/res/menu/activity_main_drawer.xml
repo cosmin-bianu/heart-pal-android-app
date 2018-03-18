@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+   <!--TODO AICI SUNT ELEMENTELE DIN SERTAR -->
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_main"
+            android:icon="@drawable/ic_home"
+            android:title="Main Page" />
+        <item
+            android:id="@+id/nav_history"
+            android:icon="@drawable/ic_history"
+            android:title="History" />
+        <item
+            android:id="@+id/nav_advice"
+            android:icon="@drawable/ic_sfat"
+            android:title="Advice" />
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_settings"
+            android:title="Settings" />
+
+    </group>
+
+    <item android:title="Feedback">
+        <menu>
+            <item
+                android:id="@+id/nav_social"
+                android:icon="@drawable/ic_contacts"
+                android:title="Social" />
+            <item
+                android:id="@+id/nav_report"
+                android:icon="@drawable/ic_feedback_black_24dp"
+                android:title="Report a problem" />
+        </menu>
+    </item>
+
+</menu>
