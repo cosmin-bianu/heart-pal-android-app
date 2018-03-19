@@ -14,12 +14,13 @@
 
     <TextView
         android:id="@+id/status_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="256dp"
+        android:layout_height="56dp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="pula"
+        android:text="xHeart"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/black"
+        android:textSize="36sp" />
     <!-- nu am facut tocmai conventional numele dar trebuie sa le pun ceva sugestiv deocamdata, la textview trb sa
     inceapa cu tv si na, mrg-->
 </LinearLayout>

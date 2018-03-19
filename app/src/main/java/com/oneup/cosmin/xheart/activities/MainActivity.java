@@ -45,6 +45,46 @@ public class MainActivity extends AppCompatActivity
      *  ce anume?
      *  lib-ul? da
      *  deci ce facem acum?
+     *  commit inseamna sa salvezi.
+     *  push inseamna sa trimiti spre server.
+     *  deci commit poti sa faci fara net, doar sa inregistrezi ce ai facut. si poti face mai multe commituri pana la push
+     *  cand dai push le trimiti la server sa le vada toata lumea. recomand sa faci push cat mai des sau odata la 2 commituri
+     *  ok? ✔️:))
+     *  nais. spor! inchid server. spune-mi cand vrei sa dai push.pai nu mi-ai zis ce sa fac :))))))
+     *  deci. stai ca tre sa le numar
+     *  oricum
+     *
+     *
+     *  //TODO citeste mai jos
+     *  un xml vreau sa fie chestionar cu 3 intrebari al caror text il setez eu mai incolo. sa fie TextView si EditView.
+     *  (settings_content_main.xml) alt xml cu setari. gasesti tu ce setari sa faca. si aici vreau
+     *      clasa singleton cu getter si setter la fiecare setare.
+     *  (history_content_main.xml) history page la care vreau sa ii scrii si codul. ii faci package numit 'logic' si o clasa numita History, singleton
+     *      cu metoda addToHistory(Case case) care sa adauge in layout un event cu timestamp de la momentul apelarii intr-o lista.
+     *  (content_main.xml) main il lasam pe mai incolo. intrebari?
+     *  taote in seara asta? cat poti. ca maine avem si test la fizica si na. ma rog si meditatii mda  vezi cat poti si imi
+     *  spui cand termini ca sa dai push.
+     *  pai 1) xml unde le fac -> res/layout (unde e si activity_main.xml etc)
+     *  2)azi o sa fie 100% doar tutoriale si functii pentru ca nu le stiu (np doar sa intelegi ceva din ele)
+     *  3) sunt rupt in gura de somn  :)) stai linistit. vezi cat faci ca nici eu nu cred ca lucrez azi. sunt rupt
+     *  ok. atat?
+     *  cred ca o sa incep cu settings azi ca e mai usor ca history. bine. app. am uitat. mda. trb facute. poti face doar
+     *  xml si atat la sett in seara asta daca e. te organizezi cum vrei. avem 2 sap sa il terminam.
+     *  ma crezi ca sunt cam pararel in ultimul timp
+     *  gen mai stiu setere getere singleton etc
+     *  da nu stiu sa le folosesc si trebuie sa le recapitulez. nu trb sa le folosesti. doar settere. le folosesc eu in restul codului
+     *  recomandare la vreun site de functii? n-ai mare functii de folosit, chiar deloc daca stau sa ma gandesc. nup.
+     *  Android Developer e cea mai buna solutie a ta. Vreau sa lucrezi singur la astea ca trebuie sa inveti sa te documentezi. mereu ai sa ai nevoie de documentatie gramada. niciodata nu scapi de ea. crede-ma.
+     *  si trebuie sa iti formezi mintea sa se adapteze foarte usor la situatii noi. este absolut esential.
+     *  nu ai sa dai de 2 proiecte la fel. incearca sa nu memorezi, ci sa intelegi de ce.
+     *  daca nu tii minte cum era facut dar stii ce facea, improvizeaza propriul fel de a face acel lucru
+     *  fie ca e singleton, get set etc. asta e universul tau si tu esti dumnezeu cu d mare. mrg.
+     *  calculatorul e sclavul tau. face precis ce ii spui tu sa faca.✔️
+     *  altceva?
+     *  sterge asta ca uitam de ea :))))) da :)) las-o acolo.
+     *  daca vrei neaparat. incearca tu sa afli cum se schimba. again. solo learning. aka experience. pai stiu de unde parca
+     *  doar ca voiam sa stiu daca pot sa o shimb sau nu, daca vrei schimb-o. unda verde de la mine :)))
+     *  . e cam ce stii de baza. clasele vor fi simple.
      */
 
 
