@@ -34,6 +34,17 @@ public class MainActivity extends AppCompatActivity
      * checklist (pt pending cases) adica?
      * can ii afiseaza sfat sa ii punem acolo, in caz ca nu poate rezolva pe loc problema sa nu uite de ea.   okcan
      * settings
+     *
+     * asa. hai sa scriem ceva si sa iti arat cum faci modificari si sa le ok. hai sa incepem altfel.
+     * iti arat cum tragi de pe net ce e incarcat deja (pt modificarile pe care le fac eu, te anunt cand incarc)
+     * asa. eu am incarcat acuma. hai sa il tragem.
+     * ai inteles ce ti-am aratat? da apas un buton albastru si se da update :).)
+     * am dat acolo show diff si ti-am aratat 2 coduri in paralel.
+     *  ce era cu verde era adaugat. albastru era modificat , si daca era rosu era sters. a de aia m=am prins
+     *  pai si de unde il iau?
+     *  ce anume?
+     *  lib-ul? da
+     *  deci ce facem acum?
      */
 
 
@@ -91,6 +102,8 @@ public class MainActivity extends AppCompatActivity
         Viewport gvp = graph.getViewport();
         gvp.setMinX(0);
         gvp.setMaxX(5);
+        gvp.setScrollable(false);
+        gvp.setScrollableY(false);
         gvp.setMinY(-127);
         gvp.setMaxY(127);
 
@@ -225,6 +238,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void addToGraph(DataPoint p){
+        //fixme: W/GraphView: scrollToEnd works only with manual x axis bounds
         points.appendData(p, true, 100);
+        graph.addSeries(points);
     }
 }
