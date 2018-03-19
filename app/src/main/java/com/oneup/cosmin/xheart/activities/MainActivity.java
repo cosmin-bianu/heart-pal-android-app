@@ -9,15 +9,19 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.Viewport;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 import com.oneup.cosmin.xheart.R;
+import com.oneup.cosmin.xheart.exceptions.ShittyCodeException;
 import com.oneup.cosmin.xheart.processing.cases.Range;
 
 public class MainActivity extends AppCompatActivity
@@ -43,12 +47,15 @@ public class MainActivity extends AppCompatActivity
     private LinearLayout statusLight;
     private TextView statusText;
     private Toolbar toolbar;
-
-    //TEST TODO COMMENT OUT ON RELEEASE
+    private GraphView graph;
+    private LineGraphSeries<DataPoint> points;
+    /*
+    //TEST
     private Button testVerde;
     private Button testGalben;
     private Button testRosu;
     private Button testNegru;
+    */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,17 +78,41 @@ public class MainActivity extends AppCompatActivity
             goodRange = new Range(3, 5, true, false);
             badRange = new Range(5, 8, true, false);
             dedRange = new Range(8, 10, true, true);
-        }catch (Exception e){//TODO CHANGE TO SHITTYCODEEXCEPTION ON MIGRATION
+        }catch (ShittyCodeException e){
             e.printStackTrace();
         }
 
 
         statusLight = (LinearLayout) navigationView.getHeaderView(0);
         statusText = statusLight.findViewById(R.id.status_text);
-        if(statusLight == null) Log.d(TAG, "onCreate: pula lumina");
-        if(statusText == null) Log.d(TAG, "onCreate: pula text");
 
-        //TEST TODO COMMENT OUT ON RELEASE
+        graph = findViewById(R.id.ecg_graph);
+        graph.setClickable(false);
+        Viewport gvp = graph.getViewport();
+        gvp.setMinX(0);
+        gvp.setMaxX(5);
+        gvp.setMinY(-127);
+        gvp.setMaxY(127);
+
+        points = new LineGraphSeries<>();
+        graph.addSeries(points);
+        final EditText editTextX = findViewById(R.id.tst_etX);
+        final EditText editTextY = findViewById(R.id.tst_etY);
+        findViewById(R.id.tst_button).setOnClickListener(
+            new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addToGraph(
+                        new DataPoint(
+                                Double.parseDouble(editTextX.getText().toString()),
+                                Double.parseDouble(editTextY.getText().toString())
+                        )
+                );
+            }
+        });
+
+        /*
+        //TEST /*
         testVerde = findViewById(R.id.tst_verde);
         testGalben = findViewById(R.id.tst_galben);
         testRosu = findViewById(R.id.tst_rosu);
@@ -112,7 +143,7 @@ public class MainActivity extends AppCompatActivity
                 updateStatus(9);
             }
         });
-        //☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦
+        *///☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦
     }
 
     @Override
@@ -191,5 +222,9 @@ public class MainActivity extends AppCompatActivity
         toolbar.setBackgroundColor(finalBackground);
         toolbar.setTitle(finalText); //zic daca ai env de tv? da. ca tre sa unesc proiectele si dureaza putin. hai ca stau sa ma uit atunci
         //cum vrei cd G:\
+    }
+
+    private void addToGraph(DataPoint p){
+        points.appendData(p, true, 100);
     }
 }

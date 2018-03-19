@@ -15,7 +15,7 @@ public class QuestionnaireData {
     private QuestionnaireAnswer Answer2;
     private QuestionnaireAnswer Answer3;
     private QuestionnaireAnswer Answer4;
-    //TODO pulse threshold, bpm safe threshold, arrhythmia threshold.
+
     public void setAnswer1(QuestionnaireAnswer answer1) {
         Answer1 = answer1;
     }

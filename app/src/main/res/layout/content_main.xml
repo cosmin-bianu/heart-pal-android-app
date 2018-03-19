@@ -8,55 +8,60 @@
     tools:context="com.oneup.cosmin.xheart.activities.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <TextView
-        android:id="@+id/textView2"
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/ecg_graph"
+        android:layout_width="wrap_content"
+        android:layout_height="219dp"
+        android:layout_marginTop="196dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/tst_etX"
+        android:layout_width="295dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="34dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginRight="33dp"
+        android:layout_marginStart="273dp"
+        android:layout_marginLeft="273dp"
+        android:layout_marginTop="71dp"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/tst_etY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ecg_graph" />
+
+    <EditText
+        android:id="@+id/tst_etY"
+        android:layout_width="299dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="153dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginRight="29dp"
+        android:layout_marginStart="273dp"
+        android:layout_marginLeft="273dp"
+        android:layout_marginTop="34dp"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tst_etX" />
+
+    <Button
+        android:id="@+id/tst_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        android:layout_marginEnd="445dp"
+        android:layout_marginRight="445dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="234dp"
+        android:text="add"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/tst_verde"
-        android:layout_width="251dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="104dp"
-        android:text="Verde"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/tst_galben"
-        android:layout_width="242dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Galben "
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.563"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tst_verde" />
-
-    <Button
-        android:id="@+id/tst_rosu"
-        android:layout_width="254dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Rosu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <Button
-        android:id="@+id/tst_negru"
-        android:layout_width="239dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="Negru"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tst_rosu" />
+        app:layout_constraintTop_toBottomOf="@+id/ecg_graph" />
 
 </android.support.constraint.ConstraintLayout>
