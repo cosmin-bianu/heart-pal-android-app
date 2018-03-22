@@ -10,41 +10,41 @@
 
     <com.jjoe64.graphview.GraphView
         android:id="@+id/ecg_graph"
-        android:layout_width="wrap_content"
-        android:layout_height="219dp"
-        android:layout_marginTop="52dp"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="144dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/tst_etX"
-        android:layout_width="164dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="34dp"
-        android:layout_marginEnd="33dp"
-        android:layout_marginStart="273dp"
-        android:layout_marginTop="71dp"
-        android:inputType="number"
+        android:layout_width="185dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="14dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:inputType="numberSigned"
         app:layout_constraintBottom_toTopOf="@+id/tst_etY"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ecg_graph" />
+        app:layout_constraintStart_toEndOf="@+id/tst_button"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/tst_etY"
         android:layout_width="185dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="153dp"
-        android:layout_marginEnd="29dp"
-        android:layout_marginRight="29dp"
-        android:layout_marginStart="273dp"
-        android:layout_marginLeft="273dp"
-        android:layout_marginTop="34dp"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="119dp"
+        android:layout_marginLeft="119dp"
+        android:layout_marginTop="14dp"
+        android:inputType="numberSigned"
+        app:layout_constraintBottom_toTopOf="@+id/ecg_graph"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tst_etX" />
 
@@ -52,16 +52,14 @@
         android:id="@+id/tst_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        android:layout_marginEnd="445dp"
-        android:layout_marginRight="445dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginLeft="68dp"
-        android:layout_marginTop="234dp"
+        android:layout_marginBottom="70dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="26dp"
         android:text="add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/ecg_graph"
+        app:layout_constraintEnd_toStartOf="@+id/tst_etX"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ecg_graph" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

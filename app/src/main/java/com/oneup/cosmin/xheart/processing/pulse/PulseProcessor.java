@@ -1,5 +1,8 @@
 package com.oneup.cosmin.xheart.processing.pulse;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 public class PulseProcessor {
     private static final PulseProcessor instance = new PulseProcessor();
     public static PulseProcessor getInstance() {
@@ -10,28 +13,41 @@ public class PulseProcessor {
     }
 
     private int pulseThreshold;
-    private int lastValueRegistered;
-    private boolean goingUp = false;
+    private boolean pulseIsOngoing = false;
+    private static final int PULSE_PAUSE_VALUE = 127; //TODO [ANALYZE] set pulse value
+    Timestamp[] timestamps;
 
-    public int getPulseThreshold() {
+    public int getPulseThreshold() { //use pulse threshold
         return pulseThreshold;
     }
     public void setPulseThreshold(int pulseThreshold) {
         this.pulseThreshold = pulseThreshold;
     }
 
-    public boolean process(int value){
-        boolean toReturn = false;
-        if(goingUp && lastValueRegistered < value) toReturn = false;
-        else if(goingUp && lastValueRegistered > value){
+    public Timestamp[] process(int value){
+        /*
+        if(goingUp && lastValueRegistered < value) registered = false;
+        else if(goingUp && value == PULSE_PAUSE_VALUE){
             goingUp = false;
-            toReturn = false;
+            registered = false;
         }
-        else if(!goingUp && lastValueRegistered < value && value > pulseThreshold){
+        //!goingUp && lastValueRegistered < value && value > pulseThreshold
+        else if(){
             goingUp = true;
-            toReturn = true;
+            registered = true;
+        }*/
+        Timestamp[] toReturn = null;
+
+        if(!pulseIsOngoing && value != PULSE_PAUSE_VALUE){
+            pulseIsOngoing = true;
+            timestamps = new Timestamp[2];
+            timestamps[0] = new Timestamp(new Date().getTime());
+        } else if(pulseIsOngoing && value == PULSE_PAUSE_VALUE) {
+            pulseIsOngoing = false;
+            timestamps[1] = new Timestamp(new Date().getTime());
+            toReturn = timestamps;
         }
-        lastValueRegistered = value;
+
         return toReturn;
     }
 }

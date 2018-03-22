@@ -35,20 +35,20 @@ public class RegisterMemory {
             @Override
             public void run() {
                 while (true) {
-                    if (memory.size() >= 2000) {
+                    if (valueMemory.size() >= 2000) {
                         try {
                             for(int i=1; i<=400; i++) {
-                                Register entity = memory.poll();
+                                Register entity = valueMemory.poll();
                                 String ecg = String.valueOf(entity.getEcg().getValue());
                                 String pulse = String.valueOf(entity.getPulse().getValue());
-                                String risk = String.valueOf(entity.getRiskAnalysis().getValue());
                                 String timestamp = entity.getTime().toString();
+                                String qrs = String.valueOf(entity.getRiskAnalysis().getValue().getComplexScore());
                                 String bpm = String.valueOf(entity.getPulse().getBpm());
                                 String totalBeats = String.valueOf(Pulse.getTotalPulseNumber());
                                 String toWrite = timestamp + ";" +
                                         ecg + ";" +
                                         pulse + ";" +
-                                        risk + ";" +
+                                        qrs + ";" +
                                         bpm + ";" +
                                         totalBeats + ";\n";
                                 outputStream.write(toWrite.getBytes());
@@ -72,12 +72,12 @@ public class RegisterMemory {
 
 
     private static boolean init;
-    private final ConcurrentLinkedQueue<Register> memory
-            = new ConcurrentLinkedQueue<>();
+    private final ConcurrentLinkedQueue<Register> valueMemory
+            = new ConcurrentLinkedQueue<>(); // TODO 100Hz -> ~20s? 50 Hz -> ~40s?
     private FileOutputStream outputStream;
 
     void add(Register toAdd){
-        memory.add(toAdd);
+        valueMemory.add(toAdd);
     }
-    public ConcurrentLinkedQueue<Register> getMemory(){ return memory; }
+    public ConcurrentLinkedQueue<Register> getValueMemory(){ return valueMemory; }
 }

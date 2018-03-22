@@ -1,5 +1,6 @@
 package com.oneup.cosmin.xheart.activities;
 
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -17,34 +18,27 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GridLabelRenderer;
 import com.jjoe64.graphview.Viewport;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 import com.oneup.cosmin.xheart.R;
 import com.oneup.cosmin.xheart.exceptions.ShittyCodeException;
+import com.oneup.cosmin.xheart.net.Connection;
+import com.oneup.cosmin.xheart.processing.Processor;
 import com.oneup.cosmin.xheart.processing.cases.Range;
-
+//TODO DESKTOP APP
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "MainActivity";
+    private static MainActivity singleton;
     /**
      * status csanid  aa nu il pun aici ca eu asa stiam
      * history
      * checklist (pt pending cases) adica?
      * can ii afiseaza sfat sa ii punem acolo, in caz ca nu poate rezolva pe loc problema sa nu uite de ea.   okcan
      * settings
-     *
-     * asa. hai sa scriem ceva si sa iti arat cum faci modificari si sa le ok. hai sa incepem altfel.
-     * iti arat cum tragi de pe net ce e incarcat deja (pt modificarile pe care le fac eu, te anunt cand incarc)
-     * asa. eu am incarcat acuma. hai sa il tragem.
-     * ai inteles ce ti-am aratat? da apas un buton albastru si se da update :).)
-     * am dat acolo show diff si ti-am aratat 2 coduri in paralel.
-     *  ce era cu verde era adaugat. albastru era modificat , si daca era rosu era sters. a de aia m=am prins
-     *  pai si de unde il iau?
-     *  ce anume?
-     *  lib-ul? da
-     *  deci ce facem acum?
      */
 
 
@@ -70,6 +64,11 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        singleton = this;
+        Processor.init(this.getApplicationContext());
+        Connection.getConnection().setAddress("B8:27:EB:EA:23:93");
+        Connection.getConnection().connect();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.toolbar);
@@ -99,15 +98,30 @@ public class MainActivity extends AppCompatActivity
 
         graph = findViewById(R.id.ecg_graph);
         graph.setClickable(false);
+        GridLabelRenderer glr = graph.getGridLabelRenderer();
+        glr.setHorizontalAxisTitle("Time (s)");
+        glr.setVerticalAxisTitle("ECG");
+        glr.setVerticalLabelsVisible(false);
+        glr.setGridColor(Color.WHITE);
         Viewport gvp = graph.getViewport();
+        gvp.setXAxisBoundsManual(true);
         gvp.setMinX(0);
         gvp.setMaxX(5);
-        gvp.setScrollable(false);
-        gvp.setScrollableY(false);
+        gvp.setYAxisBoundsManual(true);
         gvp.setMinY(-127);
         gvp.setMaxY(127);
-
+        gvp.setScrollableY(false);
+        gvp.setScrollable(false);
+        gvp.setScalableY(false);
+        gvp.setScalable(false);
         points = new LineGraphSeries<>();
+        points.setTitle("ECG");
+        points.setColor(Color.BLUE);
+        points.setDrawDataPoints(false);
+        //points.setDataPointsRadius(10);
+        points.setThickness(8);
+
+
         graph.addSeries(points);
         final EditText editTextX = findViewById(R.id.tst_etX);
         final EditText editTextY = findViewById(R.id.tst_etY);
@@ -191,7 +205,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        // Handle the camera action, todo deci aici sunt in xml elementele
+        // Handle the camera action,
         //totul luminat?nu inteleg pt ce sunt atatea else ifuri. nici eu. e cod prost scris.
         //am gasit la un moment dat comentarii de la devii de la google in codul de aici. le-au uitat acolo si
         //le-au publicat asa si imi aminteste de asta. stai. ce plm sunt alea?
@@ -208,8 +222,6 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    //TODO USE RESOURCES FOR STRINGS
-    //todo finalBackground colors pana cauti acolo pun elementele ok? ce elemente? in drawer. itemii si eu caut culorile acum? da.
     private void updateStatus(int value){
         int finalBackground;
         String finalText;
@@ -231,15 +243,18 @@ public class MainActivity extends AppCompatActivity
         } //acum sunt cu verde toate
         statusText.setText(finalText);
         ColorDrawable finalDrawable = new ColorDrawable(finalBackground);
-        statusLight.setBackground(finalDrawable); //todo rugaciune sa mearga
+        statusLight.setBackground(finalDrawable);
         toolbar.setBackgroundColor(finalBackground);
         toolbar.setTitle(finalText); //zic daca ai env de tv? da. ca tre sa unesc proiectele si dureaza putin. hai ca stau sa ma uit atunci
         //cum vrei cd G:\
     }
 
-    private void addToGraph(DataPoint p){
-        //fixme: W/GraphView: scrollToEnd works only with manual x axis bounds
+    public void addToGraph(DataPoint p){
+        //Log.d(TAG, "addToGraph:\n x = " + p.getX() + "\ny = " + p.getY());
         points.appendData(p, true, 100);
-        graph.addSeries(points);
+    }
+
+    public static MainActivity getInstance() {
+        return singleton;
     }
 }
