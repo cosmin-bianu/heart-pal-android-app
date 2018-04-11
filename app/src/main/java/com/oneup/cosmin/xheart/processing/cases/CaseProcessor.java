@@ -1,10 +1,7 @@
 package com.oneup.cosmin.xheart.processing.cases;
 
-import com.oneup.cosmin.xheart.processing.risk.RiskAssessmentResult;
+import android.util.Log;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class CaseProcessor {
     private static final CaseProcessor ourInstance = new CaseProcessor();
@@ -13,7 +10,7 @@ public class CaseProcessor {
     }
     private CaseProcessor() {
     }
-
+    /*
     public ArrayList<Case> selectCase(RiskAssessmentResult ras){
         ConcurrentLinkedQueue<Case> m  =
                 CaseMemory.getInstance().getMemory();
@@ -29,5 +26,12 @@ public class CaseProcessor {
         }
         Collections.sort(selectedCases);
         return selectedCases;
+    } */
+
+    private static final String TAG = "CaseProcessor";
+
+    public void issueAlert(String msg){
+        // TODO connect to UI
+        Log.d(TAG, "issueAlert: " + msg);
     }
 }

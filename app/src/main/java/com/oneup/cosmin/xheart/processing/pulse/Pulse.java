@@ -1,7 +1,5 @@
 package com.oneup.cosmin.xheart.processing.pulse;
 
-import com.oneup.cosmin.xheart.processing.risk.RiskAnalysis;
-
 import java.sql.Timestamp;
 
 public class Pulse {
@@ -16,16 +14,19 @@ public class Pulse {
     private final Timestamp time;
     private int deltaTime;
     private int bpm;
-    private final RiskAnalysis riskAnalysisAtRegistration;
+    private long duration; //measured in milliseconds(ms)
 
     public int getValue() {return value;}
     public int getBpm() { return bpm; }
     public int getDeltaTime() { return deltaTime;}
+    public long getDuration() { return duration; }
 
-    public Pulse(int value, Timestamp time, RiskAnalysis riskAnalysisAtRegistration) {
+    public Pulse(int value,
+                 Timestamp time,
+                 Timestamp start,
+                 Timestamp end) {
         this.value = value;
         this.time = time;
-        this.riskAnalysisAtRegistration = riskAnalysisAtRegistration;
         totalPulseNumber++;
         if(lastPulse!=null){
             long ms = time.getTime() - lastPulse.getTime();
@@ -34,5 +35,6 @@ public class Pulse {
             currentBPM = bpm;
         }
         lastPulse = time;
+        duration = end.getTime() - start.getTime();
     }
 }

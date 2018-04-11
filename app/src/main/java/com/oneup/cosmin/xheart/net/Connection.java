@@ -3,6 +3,7 @@ package com.oneup.cosmin.xheart.net;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,7 +14,7 @@ public class Connection {
     private static final Connection singleton = new Connection();
     public static Connection getConnection(){ return singleton; }
 
-
+    private static final String TAG = "Connection";
     private BluetoothSocket socket;
     private InputStream is = null;
     private OutputStream os = null;
@@ -44,13 +45,9 @@ public class Connection {
     }
 
     public String read(){
-        byte[] countArray = new byte[64];
         if(is==null) return "inputstream_null";
         try {
-            is.read(countArray);
-            int count = Integer.parseInt(
-                    new String(countArray).trim()
-            );
+            int count = is.read();
             byte[] msg = new byte[count];
             is.read(msg);
             return new String(msg);
@@ -81,6 +78,10 @@ public class Connection {
             if (socket.isConnected()) {
                 is = socket.getInputStream();
                 os = socket.getOutputStream();
+                Log.d(TAG, "onConnect: Connected");
+                Log.d(TAG, "onConnect: is null: " + (is==null));
+                Log.d(TAG, "onConnect: os null: " + (os==null));
+                ConnectionThread.getInstance().run();
             } else throw new IOException("Socket is not connected");
         }catch (IOException e){
             e.printStackTrace();
