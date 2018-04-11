@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="223dp"
-        android:layout_height="68dp"
-        android:checked="false"
-        android:showText="true"
-        android:splitTrack="false"
-        android:switchTextAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:text="Apel 113"
-        android:textSize="30sp"
-        android:trackH
-        tools:checked="false"
-        tools:layout_editor_absoluteX="81dp"
-        tools:layout_editor_absoluteY="62dp" />
+
 </android.support.constraint.ConstraintLayout>

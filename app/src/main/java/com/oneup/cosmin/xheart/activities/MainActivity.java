@@ -1,5 +1,7 @@
 package com.oneup.cosmin.xheart.activities;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -9,17 +11,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.Viewport;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
 import com.oneup.cosmin.xheart.R;
 import com.oneup.cosmin.xheart.exceptions.ShittyCodeException;
 import com.oneup.cosmin.xheart.processing.cases.Range;
@@ -98,8 +95,6 @@ public class MainActivity extends AppCompatActivity
     private LinearLayout statusLight;
     private TextView statusText;
     private Toolbar toolbar;
-    private GraphView graph;
-    private LineGraphSeries<DataPoint> points;
     /*
     //TEST
     private Button testVerde;
@@ -136,35 +131,7 @@ public class MainActivity extends AppCompatActivity
 
         statusLight = (LinearLayout) navigationView.getHeaderView(0);
         statusText = statusLight.findViewById(R.id.status_text);
-
-        graph = findViewById(R.id.ecg_graph);
-        graph.setClickable(false);
-        Viewport gvp = graph.getViewport();
-        gvp.setMinX(0);
-        gvp.setMaxX(5);
-        gvp.setScrollable(false);
-        gvp.setScrollableY(false);
-        gvp.setMinY(-127);
-        gvp.setMaxY(127);
-
-        points = new LineGraphSeries<>();
-        graph.addSeries(points);
-        final EditText editTextX = findViewById(R.id.tst_etX);
-        final EditText editTextY = findViewById(R.id.tst_etY);
-        findViewById(R.id.tst_button).setOnClickListener(
-            new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addToGraph(
-                        new DataPoint(
-                                Double.parseDouble(editTextX.getText().toString()),
-                                Double.parseDouble(editTextY.getText().toString())
-                        )
-                );
-            }
-        });
-
-        /*
+/*
         //TEST /*
         testVerde = findViewById(R.id.tst_verde);
         testGalben = findViewById(R.id.tst_galben);
@@ -197,7 +164,12 @@ public class MainActivity extends AppCompatActivity
             }
         });
         *///☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦ ☦
+
+
+
+
     }
+
 
     @Override
     public void onBackPressed() {
@@ -230,7 +202,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
         // Handle the camera action, todo deci aici sunt in xml elementele
         //totul luminat?nu inteleg pt ce sunt atatea else ifuri. nici eu. e cod prost scris.
         //am gasit la un moment dat comentarii de la devii de la google in codul de aici. le-au uitat acolo si
@@ -243,9 +214,34 @@ public class MainActivity extends AppCompatActivity
         // prost buget shit fratele meu. asta e. macar nu ezita la intrebari. ok
         // eventual uita-te acu in icoane si zi ce vrei sa pun
         //switch(plm) hai sa facem un test.
+
+        Log.d(TAG, "onNavigationItemSelected: Called.");
+        //Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        //OPEN APROPIATE FRAGMENT WHEN NAV ITEM IS SELECTED
+        if(id == R.id.nav_history){
+            //PERFORM TRANSACTION TO REPLACE CONTAINERS WITH FRAGMENT
+            Log.d(TAG, "onNavigationItemSelected: History selected");
+            //MainActivity.this.getFragmentManager().beginTransaction().replace(R.id.content_main , History.newInstance()).commit();
+            Fragment fragment = new History();
+            FragmentManager manager = getFragmentManager();
+            manager.beginTransaction().replace(R.id.content_frame , fragment).commit();
+        }
+
+        if(id == R.id.nav_main){
+            Log.d(TAG, "onNavigationItemSelected: Main selected");
+            //MainActivity.this.getFragmentManager().beginTransaction().replace(R.id.content_main , History.newInstance()).commit();
+            Fragment fragment = new Main();
+            FragmentManager manager = getFragmentManager();
+            manager.beginTransaction().replace(R.id.content_frame , fragment).commit();
+        }
+
+        //REFERENCE AND CLOSE DREAWER LAYOUT
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-        return true;
+        return  true;
+
     }
 
     //TODO USE RESOURCES FOR STRINGS
@@ -277,9 +273,4 @@ public class MainActivity extends AppCompatActivity
         //cum vrei cd G:\
     }
 
-    private void addToGraph(DataPoint p){
-        //fixme: W/GraphView: scrollToEnd works only with manual x axis bounds
-        points.appendData(p, true, 100);
-        graph.addSeries(points);
-    }
 }
