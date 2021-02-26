@@ -128,20 +128,20 @@ public class MainActivity extends AppCompatActivity
         String finalText;
 
         if(value < 2){
-            finalText = "Foarte bun";
+            finalText = "Very good";
             finalBackground = ContextCompat.getColor(getApplicationContext(), R.color.veryGood);
         }
         else if (value < 5){
-            finalText = "Bun";
+            finalText = "Good";
             finalBackground = ContextCompat.getColor(getApplicationContext(), R.color.good);
         }
         else if (value < 8){
-            finalText = "Rău";
+            finalText = "Bad";
             finalBackground = ContextCompat.getColor(getApplicationContext(), R.color.bad);
         }
         else{
-            finalText = "Foarte rău";
-            finalBackground = ContextCompat.getColor(getApplicationContext(), R.color.ded);
+            finalText = "Very bad";
+            finalBackground = ContextCompat.getColor(getApplicationContext(), R.color.verybad);
         }
         statusText.setText(finalText);
         ColorDrawable finalDrawable = new ColorDrawable(finalBackground);
