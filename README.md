@@ -1,17 +1,3 @@
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Thanks again! Now go create something AMAZING! :D
-***
-***
-***
-*** To avoid retyping too much info. Do a search and replace for the following:
-*** github_username, repo_name, twitter_handle, email, project_title, project_description
--->
-
-
-
 <!-- PROJECT SHIELDS -->
 <!--
 *** I'm using markdown "reference style" links for readability.
@@ -20,6 +6,7 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -27,42 +14,32 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
-  <h3 align="center">project_title</h3>
+  <h3 align="center">Heart Pal Android App</h3>
 
   <p align="center">
-    project_description
+  The Android App used to pair with the Heart Pal-enabled devices see <a href="https://github.com/cosmin-bianu/heart-pal-ai"> Heart Pal Artificial Intelligence</a> and <a href="https://github.com/cosmin-bianu/heart-pal-reader-module"> Heart Pal ECG Reader Module</a>.
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <strong> This application is NOT a replacement for certified medical equimpent. </strong>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://github.com/cosmin-bianu/heart-pal-android-app/issues">Report a Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/cosmin-bianu/heart-pal-android-app/issues">Request Feature</a>
   </p>
 </p>
-
-
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
   <ol>
     <li>
+      <a href="#disclaimer">Disclaimer</a>
+    </li>
+    <li>
       <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -80,63 +57,53 @@
   </ol>
 </details>
 
+<!-- Disclaimer -->
+## Disclaimer
 
+**This application is NOT a replacement for certified medical equimpent.** 
+
+This is merely a high school project. It is a prototype and likely unstable, use at your own discretion. This has **NOT** been extensively tested and has **NOT** been certified by any authority. We are not responsible for incorrect prediction and/or any outcomes.
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+The project started as a high school practice business for the Junior Achievement Business Competition. It's purpose was to use machine learning and deep neural networks to detect arrhythmia in ECG readings. Paired with a Bluetooth device that is able to send ECG readings in real-time to the Android device, it's able to analyse the ECG stream and attempts to predict/detect heart failure. 
 
-
-### Built With
-
-* []()
-* []()
-* []()
-
-
+It has been awarded 1st at the Social Innovation Relay (National Stage) in Romania 🇷🇴.
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
 
-### Prerequisites
+### Prerequisites 
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+* [Android Studio](https://developer.android.com/studio)
+* Android 4.2 (minimum API Level 17) with [USB debugging](https://developer.android.com/studio/debug/dev-options) enabled
+* [ECG Reader Module](https://github.com/cosmin-bianu/heart-pal-reader-module) (ECGRM)
 
 ### Installation
 
-1. Clone the repo
+1. Clone ther repository
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/cosmin-bianu/heart-pal-android-app.git heart-pal-android-app
    ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
-
-
+2. Open it in Android Studio
+3. Modify the MAC address of the target ECGRM Bluetooth interface to match your configuration [here](https://github.com/cosmin-bianu/heart-pal-android-app/blob/d978c650f0e7af8022e26c1ed2b2eb5faef2291d/app/src/main/java/com/oneup/cosmin/xheart/activities/MainActivity.java#L43)
+4. Connect your Android device to your computer (make sure USB debugging is enabled)
+5. Run directly or build an apk (Android Developers guide [here](https://developer.android.com/studio/run))
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-
+1. Start the ECGRM
+2. Connect your Android device to the ECGRM via Bluetooth
+3. Await for data to start displaying on the screen
 
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a list of proposed features (and known issues).
-
-
+See the [open issues](https://github.com/cosmin-bianu/heart-pal-android-app/issues) for a list of proposed features (and known issues).
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -149,46 +116,31 @@ Contributions are what make the open source community such an amazing place to b
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-
-
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
-
-
+Distributed under the Apache 2.0 License. See `LICENSE` for more information.
 
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
+Cosmin Bianu
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+email: kitsune.cosmin@gmail.com
 
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-
-* []()
-* []()
-* []()
-
-
-
-
+Project Link: [https://github.com/cosmin-bianu/heart-pal-android-app](https://github.com/cosmin-bianu/heart-pal-android-app)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/cosmin-bianu/heart-pal-android-app.svg?style=for-the-badge
+[contributors-url]: https://github.com/cosmin-bianu/heart-pal-android-app/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/cosmin-bianu/heart-pal-android-app.svg?style=for-the-badge
+[forks-url]: https://github.com/cosmin-bianu/heart-pal-android-app/network/members
+[stars-shield]: https://img.shields.io/github/stars/cosmin-bianu/heart-pal-android-app.svg?style=for-the-badge
+[stars-url]: https://github.com/cosmin-bianu/heart-pal-android-app/stargazers
+[issues-shield]: https://img.shields.io/github/issues/cosmin-bianu/heart-pal-android-app.svg?style=for-the-badge
+[issues-url]: https://github.com/cosmin-bianu/heart-pal-android-app/issues
+[license-shield]: https://img.shields.io/github/license/cosmin-bianu/heart-pal-android-app.svg?style=for-the-badge
+[license-url]: https://github.com/cosmin-bianu/heart-pal-android-app/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/github_username
+[linkedin-url]: https://linkedin.com/in/cosmin-bianu
