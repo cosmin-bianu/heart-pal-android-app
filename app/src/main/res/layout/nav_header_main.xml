@@ -3,7 +3,7 @@
     android:id="@+id/status_light"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
-    android:background="@android:color/holo_blue_bright"
+    android:background="@drawable/app_bar_main_bg"
     android:gravity="bottom"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -14,13 +14,12 @@
 
     <TextView
         android:id="@+id/status_text"
+        android:visibility="gone"
         android:layout_width="256dp"
         android:layout_height="56dp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="xHeart"
+        android:text=""
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:textSize="36sp" />
-    <!-- nu am facut tocmai conventional numele dar trebuie sa le pun ceva sugestiv deocamdata, la textview trb sa
-    inceapa cu tv si na, mrg-->
 </LinearLayout>

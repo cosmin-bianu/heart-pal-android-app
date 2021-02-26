@@ -10,15 +10,8 @@
        <item
             android:id="@+id/nav_history"
             android:icon="@drawable/ic_history"
-            android:title="Historic"
+            android:title="History"
             />
-
-
-
-      <!--  <item
-            android:id="@+id/nav_advice"
-            android:icon="@drawable/ic_sfat"
-            android:title="Advice" /> ca nu prea avem ce sfat sa ii dam. nu are rost sa facem pagina separat-->
     </group>
 
     <item android:title="Feedback">
@@ -33,5 +26,11 @@
                 android:title="Report a problem" />
         </menu>
     </item>
-
+    <item android:title="Status">
+        <menu>
+            <item
+                android:id="@+id/nav_status_bt"
+                android:title="Bluetooth: Disconnected"/>
+        </menu>
+    </item>
 </menu>

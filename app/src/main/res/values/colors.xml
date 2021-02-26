@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#00d75e</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="veryGood">#FF99CC00</color>
-    <color name="good">#FFFFBB33</color>
-    <color name="bad">#FFCC0000</color>
-    <color name="ded">#FF000000</color>
+    <color name="good">#fff200</color>
+    <color name="bad">#FFFFBB33</color>
+    <color name="ded">#FFCC0000</color>
+    <color name="green">#6DD594</color>
+    <color name="blue">#7A88D1</color>
 </resources>
