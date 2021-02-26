@@ -34,17 +34,19 @@ public class MainActivity extends AppCompatActivity
     private TextView statusText;
     private Toolbar toolbar;
     private static MenuItem bluetoothStatus;
+    private String ECGRMMacAddress;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        ECGRMMacAddress = "00:00:00:00:00:00"; //CHANGE THIS
 
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -57,14 +59,13 @@ public class MainActivity extends AppCompatActivity
         statusLight = (LinearLayout) navigationView.getHeaderView(0);
         statusText = statusLight.findViewById(R.id.status_text);
 
-
         FragmentManager manager = getFragmentManager();
         manager.beginTransaction().replace(R.id.content_frame , new Main()).commit();
 
         looper = getMainLooper();
         context = getApplicationContext();
 
-        Connection.getConnection().setAddress("B8:27:EB:EA:23:93");
+        Connection.getConnection().setAddress(ECGRMMacAddress);
     }
 
 
